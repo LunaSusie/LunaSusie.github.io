@@ -240,8 +240,8 @@ sidebar:
 # If you want to use gitment or gitalk,you should get the client_id and client_secret form https://github.com/settings/applications/new
 # If you want to use valine,you should get the app_id and app_key form https://leancloud.cn ,more setting please see https://valine.js.org
 comment:
-    use: disqus_click
-    shortname: blog-lunaselene-cn
+    use: 
+    shortname: gitalk
     changyan_appid:
     changyan_conf:
     changyan_thread_key_type: path
@@ -259,10 +259,10 @@ comment:
     valine_lang: zh-cn # i18n
     valine_placeholder: Just go go # valine comment input placeholder(like: Please leave your footprints )
     valine_guest_info: nick,mail,link #valine comment header info
-    gitalk_repo: # git repo of the hexo
-    gitalk_owner: # git repo's owner
-    gitalk_client_id: # github app client id 
-    gitalk_client_secret: # github app client secret
+    gitalk_repo: github.com:LunaSusie/LunaSusie.github.io.git
+    gitalk_owner: LunaSusie
+    gitalk_client_id: c90f7d7e270538c05f2b
+    gitalk_client_secret: 9587afcd943ba43343e5b7ee885b8e9b8f879ab8
 
 # Search Systems
 # Available value:
