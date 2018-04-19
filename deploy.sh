@@ -1,6 +1,5 @@
 cd ./public # Hexo 生成的目录默认在 public 下
 git init # 初始化一个 Repo
-echo "blog.lunaselene.cn" > CNAME
 git config --global push.default matching
 git config --global user.email "${GitHubEMail}"
 git config --global user.name "${GitHubUser}" # 利用在环境变量中定义的信息配置 Git
