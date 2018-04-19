@@ -259,7 +259,7 @@ comment:
     valine_lang: zh-cn # i18n
     valine_placeholder: Just go go # valine comment input placeholder(like: Please leave your footprints )
     valine_guest_info: nick,mail,link #valine comment header info
-    gitalk_repo: github.com:LunaSusie/LunaSusie.github.io.git
+    gitalk_repo: https://github.com/LunaSusie/LunaSusie.github.io
     gitalk_owner: LunaSusie
     gitalk_client_id: c90f7d7e270538c05f2b
     gitalk_client_secret: 9587afcd943ba43343e5b7ee885b8e9b8f879ab8
