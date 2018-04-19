@@ -1,3 +1,4 @@
+cp CNAME /public/CNAME
 cd ./public # Hexo 生成的目录默认在 public 下
 git init # 初始化一个 Repo
 git config --global push.default matching
