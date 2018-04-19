@@ -5,4 +5,5 @@ git config --global user.email "${GitHubEMail}"
 git config --global user.name "${GitHubUser}" # 利用在环境变量中定义的信息配置 Git
 git add --all .
 git commit -m "Auto Builder of ${GitHubUser}'s Blog" # commit 信息
-git push --quiet --force https://${GitHubKEY}@github.com/${GitHubUser}/${GitHubRepo}.git master # 将生成的静态整站部署到指定 Repo 的 master 分支。
+# 将生成的静态整站部署到指定 Repo 的 master 分支。
+git push --quiet --force https://${GitHubKEY}@github.com/${GitHubUser}/${GitHubRepo}.git master
