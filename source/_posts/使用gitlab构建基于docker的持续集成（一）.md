@@ -6,11 +6,11 @@ categories: 持续集成
 ----------
 # 开篇
 
-我测试项目使用的是aspnetcore项目，所以项目中的坑是针对net的，但是gitlab部分应该是通用的。
+关于CI，我的简单理解就是，项目的一键编译+测试+部署发布，然后可以重复利用这个过程，你只要一提交代码，项目就发布完成了。
 
-本文中git仓库，CI等这些系统都使用了gitlab自带的，并且开启了gitlab的dockerc仓库功能。
+而docker，可以给编译，测试，部署提供环境支撑，简单来说，就是比传统CI更方便，简化了CI过程中的环境问题。
 
-本来是有想法是部署到公网，但是由于部署gitlab是在是很消耗内存。
+本来是有想法是部署到公网，让大家试一下效果的，但是由于部署gitlab非常消耗，我的小服务器抗不住，只好把过程记录下来，给大家一个参考，也给自己做个备忘。
 
 先贴几张效果图吧，有个整体印象。
 
@@ -20,9 +20,7 @@ categories: 持续集成
 
 ![CI界面](https://www.github.com/loveshullf/Notes/raw/img/小书匠/使用gitlab构建基于docker的CI-2018-4/1524012721018.jpg)
 
-本文大致是分三部分，环境准备，Centos主机上的配置，win主机的配置。
-
-接下来就开始吧，开篇先准备一下环境，大致需要的环境是两个主机，CA证书，然后就是都安装上docker。
+本文大致是分三部分，基础准备，Centos主机上的配置，win主机的配置，最后发布测试。
 
 # 整体环境规划
 * 本机（开发机）：win10系统
@@ -36,7 +34,7 @@ categories: 持续集成
 	* docker-compose
     * 导入CA证书   
     * 设置hosts设置域名：gitlab.luna.cn 映射本机ip
-* gitlab-runner：Centos7.3 （我把它部署到了gitlab服务器上了，规范的做法是分开部署）
+* gitlab-runner：Centos7.3 （我把它部署到了gitlab服务器上了，规范的做法是应该分开部署）
 	* docker
 	* docker-compose
 
@@ -320,3 +318,8 @@ update-ca-trust extract
 ![验证导入成功](https://www.github.com/loveshullf/Notes/raw/img/小书匠/使用gitlab构建基于docker的CI-2018-4/1524000473733.jpg)
 
 
+# 补充
+最后科普一个Centos开机启动docker的方法，网上找来的怎么做开机启动脚本
+1.chmod +x /etc/rc.d/rc.local
+2.vi  /etc/rc.d/rc.local 添加/root/script/autostart.sh
+3.vi /root/script/autostart.sh 添加/bin/systemctl start docker
