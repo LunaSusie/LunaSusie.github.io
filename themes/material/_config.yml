@@ -7,7 +7,7 @@ head:
     favicon: "/img/favicon.png"
     high_res_favicon: "/img/favicon.png"
     apple_touch_icon: "/img/favicon.png"
-    keywords:
+    keywords: net core
     site_verification:
         google:
         baidu:
@@ -234,7 +234,7 @@ sidebar:
 # Integrated Services
 # ---------------------------------------------------------------
 
-# Comment Systems
+# Comment Systems 评论系统
 # Available value of "use":
 #     disqus | disqus_click | changyan | livere | gitment | gitalk | valine
 # If you want to use gitment or gitalk,you should get the client_id and client_secret form https://github.com/settings/applications/new
@@ -259,7 +259,7 @@ comment:
     valine_lang: zh-cn # i18n
     valine_placeholder: Just go go # valine comment input placeholder(like: Please leave your footprints )
     valine_guest_info: nick,mail,link #valine comment header info
-    
+
     gitalk_repo: LunaSusie.github.io
     gitalk_owner: LunaSusie
     gitalk_client_id: c90f7d7e270538c05f2b
@@ -273,7 +273,7 @@ search:
     use: google
     swiftype_key:
 
-# Analytics Systems
+# Analytics Systems  
 # Available value:
 #     baidu | google | cnzz
 analytics:
