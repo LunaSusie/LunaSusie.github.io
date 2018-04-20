@@ -2,6 +2,8 @@
 title: 使用gitlab构建基于docker的持续集成（三）
 tags: [gitlab, docker, aspnetcore]
 categories: 持续集成
+date: 2018/4/21
+updated: 2018/4/21
 ---
 ----------
 
