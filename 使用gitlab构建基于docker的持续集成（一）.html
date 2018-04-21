@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.2 -->
+    <script>
+        window.materialVersion = "1.5.2"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source"/>
+
+
+
+    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            使用gitlab构建基于docker的持续集成（一） | 
+        
+        LunaSelene&#39;Blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content="net core,gitlab,docker,aspnetcore">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/material.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/style.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/prettify.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/prettify/vibrant-ink.min.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/css/material-icons.css",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/jquery.min.js", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="LunaSelene&#39;Blog">
+    <meta name="msapplication-starturl" content="http://blog.lunaselene.cn/使用gitlab构建基于docker的持续集成（一）.html">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="LunaSelene&#39;Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://blog.lunaselene.cn/使用gitlab构建基于docker的持续集成（一）.html">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="使用gitlab构建基于docker的持续集成（一） | LunaSelene&#39;Blog">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="gitlab"> <meta property="og:article:tag" content="docker"> <meta property="og:article:tag" content="aspnetcore"> 
+
+    
+        <meta property="article:published_time" content="Thu Apr 19 2018 00:00:00 GMT+0000">
+        <meta property="article:modified_time" content="Fri Apr 20 2018 00:00:00 GMT+0000">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://blog.lunaselene.cn/使用gitlab构建基于docker的持续集成（一）.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://blog.lunaselene.cn/使用gitlab构建基于docker的持续集成（一）.html",
+    "headline": "使用gitlab构建基于docker的持续集成（一）",
+    "datePublished": "Thu Apr 19 2018 00:00:00 GMT+0000",
+    "dateModified": "Fri Apr 20 2018 00:00:00 GMT+0000",
+    "author": {
+        "@type": "Person",
+        "name": "LunaSelene",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/luna/avatar.png"
+        },
+        "description": "小本本上的八卦羞答答，人生太复杂"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "LunaSelene&#39;Blog",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",gitlab,docker,aspnetcorenet core",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+        <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-117832914-1', 'auto');ga('send', 'pageview');
+</script>
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#开篇"><span class="post-toc-number">1.</span> <span class="post-toc-text">开篇</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#整体环境规划"><span class="post-toc-number">2.</span> <span class="post-toc-text">整体环境规划</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#准备工作"><span class="post-toc-number">3.</span> <span class="post-toc-text">准备工作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CA证书"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">CA证书</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#虚拟机系统：安装Centos7-3"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">虚拟机系统：安装Centos7.3</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-设置Centos的host"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">3.设置Centos的host</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设置windows的host"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">设置windows的host</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Centos上docker安装"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">Centos上docker安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Centos上docker-compose安装"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">Centos上docker-compose安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#window下安装docker-for-windows就可以了，包含docker-compose"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">window下安装docker for windows就可以了，包含docker-compose</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Centos7-3导入CA证书"><span class="post-toc-number">3.8.</span> <span class="post-toc-text">Centos7.3导入CA证书</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#window10导入CA证书"><span class="post-toc-number">3.9.</span> <span class="post-toc-text">window10导入CA证书</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#补充"><span class="post-toc-number">4.</span> <span class="post-toc-text">补充</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                使用gitlab构建基于docker的持续集成（一）
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/luna/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>LunaSelene</strong>
+        <span>4月 19, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="https://pan.baidu.com/share/qrcode?w=246&h=246&url=http://blog.lunaselene.cn/使用gitlab构建基于docker的持续集成（一）.html">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/aspnetcore/">aspnetcore</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/docker/">docker</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/gitlab/">gitlab</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=使用gitlab构建基于docker的持续集成（一）&url=http://blog.lunaselene.cn/使用gitlab构建基于docker的持续集成（一）.html&pic=http://blog.lunaselene.cn/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=使用gitlab构建基于docker的持续集成（一）&url=http://blog.lunaselene.cn/使用gitlab构建基于docker的持续集成（一）.html&via=LunaSelene" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.lunaselene.cn/使用gitlab构建基于docker的持续集成（一）.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://blog.lunaselene.cn/使用gitlab构建基于docker的持续集成（一）.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://blog.lunaselene.cn/使用gitlab构建基于docker的持续集成（一）.html&title=使用gitlab构建基于docker的持续集成（一）" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=LunaSelene&#39;Blog&title=使用gitlab构建基于docker的持续集成（一）&summary=&pics=http://blog.lunaselene.cn/img/favicon.png&url=http://blog.lunaselene.cn/使用gitlab构建基于docker的持续集成（一）.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://blog.lunaselene.cn/使用gitlab构建基于docker的持续集成（一）.html&text=使用gitlab构建基于docker的持续集成（一）" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <hr>
+<h1 id="开篇"><a href="#开篇" class="headerlink" title="开篇"></a>开篇</h1><p>关于CI，我的简单理解就是，项目的一键编译+测试+部署发布，然后可以重复利用这个过程，你只要一提交代码，项目就发布完成了。</p>
+<p>而docker，可以给编译，测试，部署提供环境支撑，简单来说，就是比传统CI更方便，简化了CI过程中的环境问题。</p>
+<p>本来是有想法是部署到公网，让大家试一下效果的，但是由于部署gitlab非常消耗，我的小服务器抗不住，只好把过程记录下来，给大家一个参考，也给自己做个备忘。</p>
+<p>先贴几张效果图吧，有个整体印象。</p>
+<p><img src="https://www.github.com/loveshullf/Notes/raw/img/小书匠/使用gitlab构建基于docker的CI-2018-4/1524012232084.jpg" alt="git项目界面"></p>
+<p><img src="https://www.github.com/loveshullf/Notes/raw/img/小书匠/使用gitlab构建基于docker的CI-2018-4/1524012665989.jpg" alt="docker仓库"></p>
+<p><img src="https://www.github.com/loveshullf/Notes/raw/img/小书匠/使用gitlab构建基于docker的CI-2018-4/1524012721018.jpg" alt="CI界面"></p>
+<p>本文大致是分三部分，基础准备，Centos主机上的配置，win主机的配置，最后发布测试。</p>
+<h1 id="整体环境规划"><a href="#整体环境规划" class="headerlink" title="整体环境规划"></a>整体环境规划</h1><ul>
+<li>本机（开发机）：win10系统<ul>
+<li>开启Hyper-v</li>
+<li>安装docker for windows</li>
+<li>vs2017</li>
+<li>使用自签名证书的话要导入证书</li>
+<li>hosts设置域名：gitlab.luna.cn 映射gitlab服务器上</li>
+</ul>
+</li>
+<li>gitlab服务器：Centos 7.3<ul>
+<li>docker</li>
+<li>docker-compose</li>
+<li>导入CA证书   </li>
+<li>设置hosts设置域名：gitlab.luna.cn 映射本机ip</li>
+</ul>
+</li>
+<li>gitlab-runner：Centos7.3 （我把它部署到了gitlab服务器上了，规范的做法是应该分开部署）<ul>
+<li>docker</li>
+<li>docker-compose</li>
+</ul>
+</li>
+</ul>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="CA证书"><a href="#CA证书" class="headerlink" title="CA证书"></a>CA证书</h2><p>我提供一个我用的证书，证书的域名为：gitlab.luna.cn<br>创建两个文本，然后复制下面代码，改文件名即可。<br>gitlab.luna.cn.crt</p>
+<pre><code class="bash">-----BEGIN CERTIFICATE-----
+MIIDWzCCAkOgAwIBAgIBATANBgkqhkiG9w0BAQsFADAZMRcwFQYDVQQDEw5naXRs
+YWIubHVuYS5jbjAgFw0xODA0MTMxNjU2MDBaGA8yMTE4MDQxMzE2NTYwMFowGTEX
+MBUGA1UEAxMOZ2l0bGFiLmx1bmEuY24wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw
+ggEKAoIBAQDfNr+I2/H7blGFJfpoN4DM3Z4eRolH439ElKkdIj99XiXQ0U2mIm57
+LaFORPGPh0ESqT4qKWSeIyQvPInBb97ACbVj30iqBoQPC919bHOjQpebp7L/8YMH
+ZMqA7Njaq+a397d6bbtMTKX0nixmTSqqrohJhK6vvdKgjLhK1neLDmGw9wJwh40W
+IuOV8u/gQqGGnKmzJieMufowTcSPm9nM0rACYpUAdGCpMp1MFxpkRKd62LKzx36j
+uaXKmwiLo9RsKlPGoZbyOjZhkEw2F0TQDSno5CKJIsO+GqK2Piu2o55bmhe8DOWv
++v3BfGaM0Ne5injmCE+SUs7baInS7TqFAgMBAAGjgaswgagwDwYDVR0TAQH/BAUw
+AwEB/zAdBgNVHQ4EFgQUtX0LUdEaIwJnFSIIVNwNBRX6Js8wCwYDVR0PBAQDAgGG
+MDsGA1UdJQQ0MDIGCCsGAQUFBwMBBggrBgEFBQcDAgYIKwYBBQUHAwMGCCsGAQUF
+BwMEBggrBgEFBQcDCDAZBgNVHREEEjAQgg5naXRsYWIubHVuYS5jbjARBglghkgB
+hvhCAQEEBAMCAPcwDQYJKoZIhvcNAQELBQADggEBACYKfo4KacODb202yW+GFuf1
+4jzUtM7xVp9KfDbKfitpYJETNDouDoauZRmjJHHqTOMXlnVQjkgC01o5t/QcCT/X
+siV+/5aqj+44Ww3POd9CizVId1luWC44UZ+tJxJmQqgn5fckH7SE5k8+tZrzQgZa
+wbqE37mnCauWMTcLrUxEy36m4yQjrn5XCk2LRZt60kU2q/CbOyR7FCzF3Dv0+99r
+OfmA52THHlFxyoP4E20cEH/bVZ11wyTopCR9B7yzQykkJ3jeNylwEOWPnhDOk4+t
+ZRedShv32tHM+XT9wuQ0+YgV+jjcM3PfqfhDSunln/i0dKHnkMRZyqLbSE4pOo8=
+-----END CERTIFICATE-----
+</code></pre>
+<p>gitlab.luna.cn.key</p>
+<pre><code class="bash">-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEA3za/iNvx+25RhSX6aDeAzN2eHkaJR+N/RJSpHSI/fV4l0NFN
+piJuey2hTkTxj4dBEqk+KilkniMkLzyJwW/ewAm1Y99IqgaEDwvdfWxzo0KXm6ey
+//GDB2TKgOzY2qvmt/e3em27TEyl9J4sZk0qqq6ISYSur73SoIy4StZ3iw5hsPcC
+cIeNFiLjlfLv4EKhhpypsyYnjLn6ME3Ej5vZzNKwAmKVAHRgqTKdTBcaZESnetiy
+s8d+o7mlypsIi6PUbCpTxqGW8jo2YZBMNhdE0A0p6OQiiSLDvhqitj4rtqOeW5oX
+vAzlr/r9wXxmjNDXuYp45ghPklLO22iJ0u06hQIDAQABAoIBAGX8pdbqZ83xwd2M
+VLV5Zqg0OiKrJ95o26WCJyLgmxG1CqI2f7wAz2oIl0MjzRs/OURFf9nTv91hQQ80
+Idz4OFaWGQLg6lqFT6FwUmsUOmHF829zWB4JQ00FiGEP1qVTFb/It1SA/qsF+m2i
+N7cmWvBRfoPY09gIa0xf/3RyOXyW4ynzxN6OGUmXK7uuGmjJsG+yYUcIkpi2nVb9
+WhCB06sNZ/wLWhg9hHZTaiC/DQ3WmFp2pZCI8qoY5jD3rx0yKJmqrShYkphKHYuM
+9AnyRoMLTUJZIzHuiysbQMq50qunlEIz9mQdAvKH+ObP+AqXJSpyQ/11Xk45YqQy
+aJwP2wECgYEA783ihXtg7vS1Ymj7IRN07i0oXm16M+j7wgq/PpI/FJqL7S2Es3Ot
+3lqEsX4V5/HLgAwsH2kcNelkqmSzLE6CwxktmFqj16MBxGkteI5T0O8QE4+KcZFh
+M3JIMkuwPjHoQP9SoDfxblVOm01y0RqDR39Speh3ZQxZU/eg7hjiU+0CgYEA7koF
+yxzLUAbjB2jMHsMxejpyk2qFOgGjW2Poy38kPapeID7q9dUSUXDgqnPZ0hsrv0I5
+8jrh+OK4+Nn9MtpJ2XtP116Jc6hvUOMplZALiU8oCU5IwCAGh6oVOiDfENTe7jRV
+wZYiYdBa5cfhprp3SThx1gCQVja1SJJ77E7u3fkCgYEApoYsVVE2IPnhs3L/YRqn
+ynWlYN1ZTQ7vNPJNl9/q2h3wKUXArvUXuh7VooPSJn1sOYE6ap2NL4rhksnW+l+S
+wnSLiw72U9oocgIvx1XesmowmcTF+NNh0l378KFKxAXYKLqk4Am5KEspCQOhRb/J
+hi7Ob9OchZkrtvlw0aaKFIkCgYEAtUcI60EHhuUGV7+o8YorHMJUIcO6gKt4W/FA
+y3b42hS+sKdM1iH3Yo+Nyv6Bae6TtFesf5O+Dzpj36Tuk34vCk1eKwjXZm5v6Mg3
+/Xjs3dOjMJkmjUqPzSteJK+XI1XeFrcnujL+Cw2X6RDLoKxgTQqsx1H8fCn4dbJC
+pj5SR/kCgYA3dJD4p66xs7NxreppPCiuJvdTcK5GNseLy0ZK/EIJhAaZd5eB43h2
+TwBWieY8hDEgeqO52Y4lwLVEPFLfnDvVhy5Vt21RY4DkubrLVrT9Qfi9FXoZDv1K
+FopMObRAdaaxh9h5SHjIUg6ABf5owQsB1y+cmaGYHIDkLttOmXVJEA==
+-----END RSA PRIVATE KEY-----
+-----BEGIN CERTIFICATE-----
+MIIDWzCCAkOgAwIBAgIBATANBgkqhkiG9w0BAQsFADAZMRcwFQYDVQQDEw5naXRs
+YWIubHVuYS5jbjAgFw0xODA0MTMxNjU2MDBaGA8yMTE4MDQxMzE2NTYwMFowGTEX
+MBUGA1UEAxMOZ2l0bGFiLmx1bmEuY24wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw
+ggEKAoIBAQDfNr+I2/H7blGFJfpoN4DM3Z4eRolH439ElKkdIj99XiXQ0U2mIm57
+LaFORPGPh0ESqT4qKWSeIyQvPInBb97ACbVj30iqBoQPC919bHOjQpebp7L/8YMH
+ZMqA7Njaq+a397d6bbtMTKX0nixmTSqqrohJhK6vvdKgjLhK1neLDmGw9wJwh40W
+IuOV8u/gQqGGnKmzJieMufowTcSPm9nM0rACYpUAdGCpMp1MFxpkRKd62LKzx36j
+uaXKmwiLo9RsKlPGoZbyOjZhkEw2F0TQDSno5CKJIsO+GqK2Piu2o55bmhe8DOWv
++v3BfGaM0Ne5injmCE+SUs7baInS7TqFAgMBAAGjgaswgagwDwYDVR0TAQH/BAUw
+AwEB/zAdBgNVHQ4EFgQUtX0LUdEaIwJnFSIIVNwNBRX6Js8wCwYDVR0PBAQDAgGG
+MDsGA1UdJQQ0MDIGCCsGAQUFBwMBBggrBgEFBQcDAgYIKwYBBQUHAwMGCCsGAQUF
+BwMEBggrBgEFBQcDCDAZBgNVHREEEjAQgg5naXRsYWIubHVuYS5jbjARBglghkgB
+hvhCAQEEBAMCAPcwDQYJKoZIhvcNAQELBQADggEBACYKfo4KacODb202yW+GFuf1
+4jzUtM7xVp9KfDbKfitpYJETNDouDoauZRmjJHHqTOMXlnVQjkgC01o5t/QcCT/X
+siV+/5aqj+44Ww3POd9CizVId1luWC44UZ+tJxJmQqgn5fckH7SE5k8+tZrzQgZa
+wbqE37mnCauWMTcLrUxEy36m4yQjrn5XCk2LRZt60kU2q/CbOyR7FCzF3Dv0+99r
+OfmA52THHlFxyoP4E20cEH/bVZ11wyTopCR9B7yzQykkJ3jeNylwEOWPnhDOk4+t
+ZRedShv32tHM+XT9wuQ0+YgV+jjcM3PfqfhDSunln/i0dKHnkMRZyqLbSE4pOo8=
+-----END CERTIFICATE-----
+
+</code></pre>
+<h2 id="虚拟机系统：安装Centos7-3"><a href="#虚拟机系统：安装Centos7-3" class="headerlink" title="虚拟机系统：安装Centos7.3"></a>虚拟机系统：安装Centos7.3</h2><p>安装的时候尤其要注意：</p>
+<ul>
+<li>开启网络，不开启，后续需要进到虚拟机开启，比较麻烦。</li>
+<li>设置时区，不设置的话，时间会错误。</li>
+<li>设置密码，root的密码，不说你也知道。</li>
+<li>最小安装，就是默认，不要去选其他的乱七八糟的预装系统。<br>最后，要保证虚拟机能联网，主机能ping通虚拟机就可以了。</li>
+</ul>
+<h2 id="3-设置Centos的host"><a href="#3-设置Centos的host" class="headerlink" title="3.设置Centos的host"></a>3.设置Centos的host</h2><p>1.获取Centos主机的IP</p>
+<pre><code class="bash">[root@gitlab etc]# ip addr
+</code></pre>
+<p>2.找eth0的地址，我这里找到ip为：172.24.162.122<br>3.设置hosts</p>
+<pre><code class="bash">[root@gitlab etc]# vi /etc/hosts
+</code></pre>
+<p>4.添加一条记录 </p>
+<pre><code class="bash">172.24.162.122   gitlab.luna.cn
+</code></pre>
+<p>5.你也可以把hostname也一起改了。<br>5.退出保存即可。<br>6.ping一下域名，看一下是否可以通。</p>
+<h2 id="设置windows的host"><a href="#设置windows的host" class="headerlink" title="设置windows的host"></a>设置windows的host</h2><p>1.打开C:\Windows\System32\drivers\etc\hosts文件<br>2.添加记录172.24.162.122   gitlab.luna.cn<br>3.最好重启。<br>4.尝试ping一下域名，是否能通，能通就行。</p>
+<h2 id="Centos上docker安装"><a href="#Centos上docker安装" class="headerlink" title="Centos上docker安装"></a>Centos上docker安装</h2><p>获取docker官方源</p>
+<pre><code class="bash">yum -y install yum-utils
+
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+</code></pre>
+<p>如果获取不到源，可以用阿里源，vi /etc/yum.repos.d/docker-ce.repo替换掉内容为下面的</p>
+<pre><code class="bash">[docker-ce-stable]
+
+name=Docker CE Stable - $basearch
+baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/$basearch/stable
+enabled=1
+gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
+
+[docker-ce-stable-debuginfo]
+name=Docker CE Stable - Debuginfo $basearch
+baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/debug-$basearch/stable
+enabled=0
+gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
+
+[docker-ce-stable-source]
+name=Docker CE Stable - Sources
+baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/source/stable
+enabled=0
+gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
+
+[docker-ce-edge]
+name=Docker CE Edge - $basearch
+baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/$basearch/edge
+enabled=0
+gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
+
+[docker-ce-edge-debuginfo]
+name=Docker CE Edge - Debuginfo $basearch
+baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/debug-$basearch/edge
+enabled=0
+gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
+
+[docker-ce-edge-source]
+name=Docker CE Edge - Sources
+baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/source/edge
+enabled=0
+gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
+
+[docker-ce-test]
+name=Docker CE Test - $basearch
+baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/$basearch/test
+enabled=0
+gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
+
+[docker-ce-test-debuginfo]
+name=Docker CE Test - Debuginfo $basearch
+baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/debug-$basearch/test
+enabled=0
+gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
+
+[docker-ce-test-source]
+name=Docker CE Test - Sources
+baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/source/test
+enabled=0
+gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
+</code></pre>
+<p>安装docker</p>
+<pre><code class="bash">#刷新yum源
+yum makecache fast
+#安装docker-ce
+yum -y install docker-ce
+</code></pre>
+<p>最后最好配置一下docker仓库源，不然下载镜像会很慢。我配置的阿里云的源。</p>
+<h2 id="Centos上docker-compose安装"><a href="#Centos上docker-compose安装" class="headerlink" title="Centos上docker-compose安装"></a>Centos上docker-compose安装</h2><p>这里有点坑，我推荐的是安装一个python3和python2共存环境，然后从github上直接下载docker-compose<br>因为我网上看到的是python3支持yml文件的中文注释。</p>
+<p><a href="https://github.com/docker/compose/releases" target="_blank" rel="noopener">github上docker-compose最新版本地址</a></p>
+<p>以下是参考命令，不要复制全部运行，会有问题<br>安装python3，并且和Python2共存</p>
+<pre><code class="bash">mv /usr/bin/python2.7 /usr/bin/python2.7.5　　# 保留默认版本python为python2.7.5
+ln -s /usr/bin/python2.7.5 /usr/local/bin/python2.7.5　　# 创建软连接
+
+#yum修改
+ll /usr/bin/yum*　　# 查看/usr/bin/目录下所有yum文件（7个）头部
+vi /usr/bin/yum*　　# 修改/usr/bin/目录下所有yum文件（7个）头部
+#!/usr/bin/python —&gt; #!/usr/bin/python2.7.5　
+vi /usr/libexec/urlgrabber-ext-down　　# 修改/usr/libexec/目录下 urlgrabber-ext-down头部
+#!/usr/bin/python —&gt; #!/usr/bin/python2.7.5
+
+#firewall也要修改
+ll /usr/bin/firewall* #查看，2个
+vi /usr/bin/firewall* #修改
+vi /usr/sbin/firewalld #修改
+
+#编译环境
+yum -y groupinstall &#39;Development Tools&#39; 
+yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel
+
+#下载python3
+yum -y install wget
+wget https://www.python.org/ftp/python/3.6.2/Python-3.6.2.tgz 
+
+#编译，就不一步一步解释了
+tar zxvf Python-3.6.2.tgz
+cd Python-3.6.2
+./configure
+make all
+make install
+make clean
+make distclean
+rm -rf /usr/bin/python
+rm -rf /usr/bin/python3
+rm -rf /usr/bin/python3.6
+ln -s /usr/local/bin/python3.6 /usr/bin/python
+ln -s /usr/local/bin/python3.6 /usr/bin/python3
+ln -s /usr/local/bin/python3.6 /usr/bin/python3.6
+/usr/bin/python -V
+/usr/bin/python3 -V
+/usr/bin/python3.6 -V
+rm -rf /usr/local/bin/python
+rm -rf /usr/local/bin/python3
+ln -s /usr/local/bin/python3.6 /usr/local/bin/python
+ln -s /usr/local/bin/python3.6 /usr/local/bin/python3
+python -V
+python3 -V
+python3.6 -V
+</code></pre>
+<p>下载docker-compose</p>
+<pre><code class="bash">curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+</code></pre>
+<p>如果可以使用docker-compose命令基本算安装成功了吧。</p>
+<h2 id="window下安装docker-for-windows就可以了，包含docker-compose"><a href="#window下安装docker-for-windows就可以了，包含docker-compose" class="headerlink" title="window下安装docker for windows就可以了，包含docker-compose"></a>window下安装docker for windows就可以了，包含docker-compose</h2><h2 id="Centos7-3导入CA证书"><a href="#Centos7-3导入CA证书" class="headerlink" title="Centos7.3导入CA证书"></a>Centos7.3导入CA证书</h2><pre><code class="bash">yum install ca-certificates
+update-ca-trust force-enable
+#拷贝证书，foo.crt只是例子
+cp foo.crt /etc/pki/ca-trust/source/anchors/
+update-ca-trust extract
+</code></pre>
+<h2 id="window10导入CA证书"><a href="#window10导入CA证书" class="headerlink" title="window10导入CA证书"></a>window10导入CA证书</h2><p>直接打开.crt证书</p>
+<p><img src="https://www.github.com/loveshullf/Notes/raw/img/小书匠/使用gitlab构建基于docker的CI-2018-4/1524000104742.jpg" alt="安装证书"></p>
+<p><img src="https://www.github.com/loveshullf/Notes/raw/img/小书匠/使用gitlab构建基于docker的CI-2018-4/1524000178679.jpg" alt="导入证书到本机计算机"></p>
+<p><img src="https://www.github.com/loveshullf/Notes/raw/img/小书匠/使用gitlab构建基于docker的CI-2018-4/1524000330723.jpg" alt="选择导入位置"></p>
+<p><img src="https://www.github.com/loveshullf/Notes/raw/img/小书匠/使用gitlab构建基于docker的CI-2018-4/1524000361878.jpg" alt="导入"></p>
+<p><img src="https://www.github.com/loveshullf/Notes/raw/img/小书匠/使用gitlab构建基于docker的CI-2018-4/1524000406659.jpg" alt="完成"></p>
+<p>导入之后打开证书应该是这样的</p>
+<p><img src="https://www.github.com/loveshullf/Notes/raw/img/小书匠/使用gitlab构建基于docker的CI-2018-4/1524000473733.jpg" alt="验证导入成功"></p>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><p>最后科普一个Centos开机启动docker的方法，网上找来的怎么做开机启动脚本<br>1.chmod +x /etc/rc.d/rc.local<br>2.vi  /etc/rc.d/rc.local 添加/root/script/autostart.sh<br>3.vi /root/script/autostart.sh 添加/bin/systemctl start docker</p>
+
+        <div style="text-align:center;color: #ccc;font-size:14px;">------ 本文结束 ------</div>
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/">CC BY-NC-SA 3.0 中国大陆</a>协议许可，转载请注明出处
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="http://blog.lunaselene.cn/使用gitlab构建基于docker的持续集成（一）.html">http://blog.lunaselene.cn/使用gitlab构建基于docker的持续集成（一）.html</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 Gitalk -->
+<div id="gitalk-comment">
+    <!-- Gitalk 评论框 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script>
+    var gitalk = new Gitalk({
+            clientID: 'c90f7d7e270538c05f2b',
+            clientSecret: '9587afcd943ba43343e5b7ee885b8e9b8f879ab8',
+            repo: 'LunaSusie.github.io',
+            owner: 'LunaSusie',
+            admin: ['LunaSusie'],
+            id: 'Thu Apr 19 2018 00:00:00 GMT+0000',
+            // facebook-like distraction free mode
+            distractionFreeMode: false
+        })
+   gitalk.render('gitalk-container')
+</script>
+</div>
+<style>
+    #gitalk-comment {
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/使用gitlab构建基于docker的持续集成（二）.html" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/luna/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/luna/avatar.png" alt="LunaSelene's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        339698418@qq.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:339698418@qq.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/持续集成/">持续集成<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="标签">
+                
+                    <i class="material-icons sidebar-material-icons">turned_in</i>
+                
+                标签
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/timeline" title="历程">
+                
+                    <i class="material-icons sidebar-material-icons">timer</i>
+                
+                历程
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="友情链接">
+                
+                    <i class="material-icons sidebar-material-icons">group</i>
+                
+                友情链接
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">3</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/LunaSusie" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>LunaSelene'Blog
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/lazyload.min.js", true)</script>
+
+
+
+    <script>lsloader.load("js_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/js.min.js", true)</script>
+
+
+
+    <script>lsloader.load("np_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/nprogress.js", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+   <!-- GitTalk -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","https://cdn.jsdelivr.net/gh/viosey/hexo-theme-material@latest/source/js/prettify.min.js", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
