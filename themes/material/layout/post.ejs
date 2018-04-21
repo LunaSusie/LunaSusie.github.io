@@ -16,6 +16,10 @@
     <!-- Single Timeline Page -->
     <%- partial('_widget/page-timeline') %>
 
+    <% } else if(page.layout === 'about') { %>
+        <!-- Single Timeline Page -->
+        <%- partial('_widget/page-about') %>
+
 <% } else { %>
     <!-- Post Module -->
     <div class="material-post_container">
@@ -38,7 +42,6 @@
                     <!-- Paradox Post Info -->
                     <%- partial('_partial/Isolation-post-info') %>
                 <% } %>
-
                 <!-- Post Comments -->
                 <% if(page.comment !== false) { %>
                     <%- partial('_partial/comment') %>
